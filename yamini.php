@@ -45,7 +45,7 @@ function yamini_day($filter = '', $date1='yesterday', $date2='yesterday'){
     if ($filter !== '')
     	$params['filters'] = $filter;
 
-    $yesterday = metrics2array($params);
+    $yesterday = yamini2array($params);
 
     if (is_array($yesterday))
     	$result = $yesterday['data'][0]['metrics'];
