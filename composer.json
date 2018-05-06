@@ -1,0 +1,20 @@
+{
+    "name": "masterforweb/yamini",
+    "description": "Yandex Metrics minimal functions",
+    "homepage": "https://github.com/masterforweb/yamini",
+    "keywords": ["php, yandex"],
+    "type": "library",
+    "license": "MIT",
+	"authors": [
+		{
+			"name": "AK Delfin",
+            "email": "masterforweb@hotmail.com"
+    	}
+	],
+	"require": {
+		"php": ">=5.2"
+	},
+    "autoload": {
+        "files": ["yamini.php"]
+    }
+}
