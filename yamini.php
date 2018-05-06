@@ -3,7 +3,7 @@
 
 
 
-function metrics2array($params, $method = '') {
+function yamini2array($params, $method = '') {
 
 	$params['id'] = COUNTER;
 	$params['oauth_token'] = TOKEN;
@@ -30,7 +30,7 @@ function metrics2array($params, $method = '') {
 
 
 
-function day($filter = '', $date1='yesterday', $date2='yesterday'){
+function yamini_day($filter = '', $date1='yesterday', $date2='yesterday'){
 
 	$params = [
 		'metrics' => 'ym:s:pageviews,ym:s:visits,ym:s:users',
