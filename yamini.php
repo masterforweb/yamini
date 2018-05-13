@@ -1,9 +1,6 @@
 <?php
 
-
-
-
-function yamini2array($params, $method = '') {
+function yaminiquery($params, $method = '') {
 
 	$params['id'] = COUNTER;
 	$params['oauth_token'] = TOKEN;
@@ -11,7 +8,25 @@ function yamini2array($params, $method = '') {
 	if ($method !== '')
 		$method = '/'.$method;
 
-	$url = 'https://api-metrika.yandex.ru/stat/v1/data'.$method.'?'.http_build_query($params);
+	return 'https://api-metrika.yandex.ru/stat/v1/data'.$method.'?'.http_build_query($params);
+
+}
+
+
+function yamini_result($url) {
+
+	if ($url == '')
+		return '';
+
+	static $nn;
+	$nn++;
+
+	$quote = 30;
+
+	if ($nn >= $quote) {	
+		sleep(1);
+		$nn = 0;
+	}	
 	
 	$ch = curl_init();
 	curl_setopt ($ch, CURLOPT_URL, $url);
@@ -21,9 +36,20 @@ function yamini2array($params, $method = '') {
 	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
 	$metrika = curl_exec ($ch);
 	curl_close($ch);
- 
-
+	
 	return  json_decode($metrika, True);
+
+}
+
+
+
+function yamini2array($params, $method = '') {
+
+	$url = yaminiquery($params, $method);
+
+	return yamini_result($url);
+	
+	
 
 
 }
